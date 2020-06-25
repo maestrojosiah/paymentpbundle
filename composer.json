@@ -1,5 +1,5 @@
 {
-    "name": "maestrojosiah/payment-paypal-bundle",
+    "name": "maestrojosiah/paymentpbundle",
     "type": "symfony-bundle",
     "description": "Payment Bundle providing access to the PayPal API",
     "keywords": ["payment", "paypal"],

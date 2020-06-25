@@ -2,8 +2,8 @@
 PayPal Express Checkout plugin for [MaestrojosiahPaymentCoreBundle](http://maestrojosiahpaymentcorebundle.readthedocs.io/)
 
 [![Build Status](https://img.shields.io/travis/schmittjoh/MaestrojosiahPaymentPaypalBundle/master.svg?style=flat-square)](http://travis-ci.org/schmittjoh/MaestrojosiahPaymentPaypalBundle)
-[![Total Downloads](https://img.shields.io/packagist/dt/maestrojosiah/payment-paypal-bundle.svg?style=flat-square)](https://packagist.org/packages/maestrojosiah/payment-paypal-bundle)
-[![Packagist Version](https://img.shields.io/packagist/v/maestrojosiah/payment-paypal-bundle.svg?style=flat-square)](https://packagist.org/packages/maestrojosiah/payment-paypal-bundle)
+[![Total Downloads](https://img.shields.io/packagist/dt/maestrojosiah/paymentpbundle.svg?style=flat-square)](https://packagist.org/packages/maestrojosiah/paymentpbundle)
+[![Packagist Version](https://img.shields.io/packagist/v/maestrojosiah/paymentpbundle.svg?style=flat-square)](https://packagist.org/packages/maestrojosiah/paymentpbundle)
 
 Payment processing in Symfony projects using PayPal Express Checkout. Implemented as a plugin for [MaestrojosiahPaymentCoreBundle](http://maestrojosiahpaymentcorebundle.readthedocs.io/).
 

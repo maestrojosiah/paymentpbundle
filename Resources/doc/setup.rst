@@ -14,7 +14,7 @@ Install with composer:
 
 .. code-block :: bash
 
-    composer require maestrojosiah/payment-paypal-bundle
+    composer require maestrojosiah/paymentpbundle
 
 And register the bundle in your ``AppKernel.php``:
 
