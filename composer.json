@@ -1,27 +1,29 @@
 {
-    "name": "maestrojosiah/paymentpbundle",
+    "name": "markup/maestrojosiah-paymentpbundle",
     "type": "symfony-bundle",
-    "description": "Payment Bundle providing access to the PayPal API",
+    "description": "Payment Bundle providing access to the PayPal API, based on the Maestrojosiah bundle",
     "keywords": ["payment", "paypal"],
     "homepage": "http://maestrojosiahyst.com/bundles/MaestrojosiahPaymentPaypalBundle",
     "license": "Apache2",
     "authors": [
         {
-            "name": "Johannes M. Schmitt",
-            "email": "schmittjoh@gmail.com"
+            "name": "Josiah Birai",
+            "email": "maestrojosiah@gmail.com"
         }
     ],
     "require": {
-        "php": ">=7.2",
-        "symfony/browser-kit": ">=2.3",
-        "symfony/config": ">=2.3",
-        "symfony/dependency-injection": ">=2.3",
-        "symfony/form": ">=2.3",
-        "symfony/http-foundation": ">=2.3",
-        "symfony/http-kernel": ">=2.3",
-        "maestrojosiah/paymentcbundle": "~1.0"
+        "php": ">=7.1",
+        "symfony/browser-kit": ">=3.4 <5.0",
+        "symfony/config": ">=3.4 <5.0",
+        "symfony/dependency-injection": ">=3.4 <5.0",
+        "symfony/form": ">=3.4 <5.0",
+        "symfony/http-foundation": ">=3.4 <5.0",
+        "symfony/http-kernel": ">=3.4 <5.0",
+        "maestrojosiah/paymentcbundle": "~1.0|~2.0",
+        "doctrine/collections": "^1"
     },
     "require-dev": {
+        "phpstan/phpstan-shim": "^0.11",
         "phpunit/phpunit": "~4.8|~5.4",
         "symfony/phpunit-bridge": "~2.7"
     },

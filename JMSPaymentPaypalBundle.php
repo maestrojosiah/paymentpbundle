@@ -20,6 +20,6 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  * limitations under the License.
  */
 
-class JMSPaymentPaypalBundle extends Bundle
+class MaestrojosiahPaymentPaypalBundle extends Bundle
 {
 }

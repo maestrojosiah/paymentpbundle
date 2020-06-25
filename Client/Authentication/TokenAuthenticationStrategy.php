@@ -44,7 +44,8 @@ class TokenAuthenticationStrategy implements AuthenticationStrategyInterface
     {
         if ($isDebug) {
             return 'https://api-3t.sandbox.paypal.com/nvp';
-        } else {
+        }
+        else {
             return 'https://api-3t.paypal.com/nvp';
         }
     }

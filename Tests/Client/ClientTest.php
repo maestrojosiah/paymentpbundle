@@ -1,52 +1,46 @@
 <?php
 
-namespace Maestrojosiah\Payment\PaypalBundle\Tests\Client;
+namespace Maestrojosiah\Payment\PaypalBundle\Tests\Paypal;
 
 use Maestrojosiah\Payment\PaypalBundle\Client\Client;
 
 class ClientTest extends \PHPUnit_Framework_TestCase
 {
-    public function testShouldAllowGetAuthenticateExpressCheckoutTokenUrlInProdMode()
+    public static function provideExpectedAuthenticateExpressCheckoutTokenUrlsDependsOnDebugFlag()
     {
-        $expectedUrl = 'https://www.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=foobar';
-        $token = 'foobar';
-
-        $client = $this->getClient($debug = false);
-
-        $this->assertEquals($expectedUrl, $client->getAuthenticateExpressCheckoutTokenUrl($token));
+        return array(
+            array(true, 'foobar', 'https://www.sandbox.paypal.com'),
+            array(false, 'barfoo', 'https://www.paypal.com'),
+        );
     }
 
     public function testShouldAllowGetAuthenticateExpressCheckoutTokenUrlInDebugMode()
     {
-        $expectedUrl = 'https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=foobar';
+        $expectedUrl = 'https://www.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=foobar';
+
         $token = 'foobar';
 
-        $client = $this->getClient($debug = true);
+        $client = new Client($this->createAuthenticationStrategyMock(), $debug = false);
 
         $this->assertEquals($expectedUrl, $client->getAuthenticateExpressCheckoutTokenUrl($token));
     }
 
-    public function testGetAuthenticateExpressCheckoutTokenUrlParams()
+    public function testShouldAllowGetAuthenticateExpressCheckoutTokenUrlInProdMode()
     {
-        $expectedUrl = 'https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=foobar&param1=foo&param2=bar';
+        $expectedUrl = 'https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=foobar';
+
         $token = 'foobar';
-        $params = array('param1' => 'foo', 'param2' => 'bar');
 
-        $client = $this->getClient($debug = true);
+        $client = new Client($this->createAuthenticationStrategyMock(), $debug = true);
 
-        $this->assertEquals($expectedUrl, $client->getAuthenticateExpressCheckoutTokenUrl($token, $params));
-    }
-
-    private function getClient($debug)
-    {
-        return new Client($this->createAuthenticationStrategyMock(), $debug);
+        $this->assertEquals($expectedUrl, $client->getAuthenticateExpressCheckoutTokenUrl($token));
     }
 
     /**
      * @return \PHPUnit_Framework_MockObject_MockObject|\Maestrojosiah\Payment\PaypalBundle\Client\Authentication\AuthenticationStrategyInterface
      */
-    private function createAuthenticationStrategyMock()
+    public function createAuthenticationStrategyMock()
     {
-        return $this->getMockBuilder('Maestrojosiah\Payment\PaypalBundle\Client\Authentication\AuthenticationStrategyInterface')->getMock();
+        return $this->getMock('Maestrojosiah\Payment\PaypalBundle\Client\Authentication\AuthenticationStrategyInterface');
     }
 }

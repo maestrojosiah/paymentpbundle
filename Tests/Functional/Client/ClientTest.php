@@ -1,8 +1,9 @@
 <?php
 
-namespace Maestrojosiah\Payment\PaypalBundle\Tests\Functional\Client;
+namespace Maestrojosiah\Payment\PaypalBundle\Tests\Functional\Paypal;
 
-use Maestrojosiah\Payment\PaypalBundle\Tests\Functional\FunctionalTest;
+use Maestrojosiah\Payment\PaypalBundle\Client\Authentication\TokenAuthenticationStrategy;
+use Maestrojosiah\Payment\PaypalBundle\Client\Client;
 
 /*
  * Copyright 2010 Johannes M. Schmitt <schmittjoh@gmail.com>
@@ -20,16 +21,26 @@ use Maestrojosiah\Payment\PaypalBundle\Tests\Functional\FunctionalTest;
  * limitations under the License.
  */
 
-class ClientTest extends FunctionalTest
+class ClientTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @var \Maestrojosiah\Payment\PaypalBundle\Client\Client
      */
-    private $client;
+    protected $client;
 
     protected function setUp()
     {
-        $this->client = $this->getClient();
+        if (empty($_SERVER['API_USERNAME']) || empty($_SERVER['API_PASSWORD']) || empty($_SERVER['API_SIGNATURE'])) {
+            $this->markTestSkipped('In order to run these tests you have to configure: API_USERNAME, API_PASSWORD, API_SIGNATURE parameters in phpunit.xml file');
+        }
+
+        $authenticationStrategy = new TokenAuthenticationStrategy(
+            $_SERVER['API_USERNAME'],
+            $_SERVER['API_PASSWORD'],
+            $_SERVER['API_SIGNATURE']
+        );
+
+        $this->client = new Client($authenticationStrategy, $debug = true);
     }
 
     public function testRequestSetExpressCheckout()

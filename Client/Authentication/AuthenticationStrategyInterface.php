@@ -22,6 +22,6 @@ use Maestrojosiah\Payment\CoreBundle\BrowserKit\Request;
 
 interface AuthenticationStrategyInterface
 {
-    public function getApiEndpoint($isDebug);
-    public function authenticate(Request $request);
+    function getApiEndpoint($isDebug);
+    function authenticate(Request $request);
 }
